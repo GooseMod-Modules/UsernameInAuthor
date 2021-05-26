@@ -15,7 +15,7 @@ export default {
           style: {
             color: author.colorString,
             filter: 'brightness(0.5)',
-            marginRight: '3px'
+            marginLeft: author.nick === message.author.username ? '' : '5px'
           }
         }, author.nick === message.author.username ? '' : `(${message.author.username})`
         )
