@@ -1,0 +1,12 @@
+{
+  "main": "index.js",
+
+  "name": "Username In Author",
+  "description": "Adds username to message's author if they have a nickname",
+
+  "tags": ["ui"],
+
+  "authors": ["506482395269169153"],
+
+  "version": "2.0.0"
+}
