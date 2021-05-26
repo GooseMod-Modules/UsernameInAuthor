@@ -14,7 +14,8 @@ export default {
           className: MessageClasses.username,
           style: {
             color: author.colorString,
-            filter: 'brightness(0.5)'
+            filter: 'brightness(0.5)',
+            marginRight: '3px'
           }
         }, author.nick === message.author.username ? '' : `(${message.author.username})`
         )
