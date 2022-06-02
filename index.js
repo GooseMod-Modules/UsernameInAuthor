@@ -1,10 +1,15 @@
-const { React } = Webpack.common;
-const MessageClasses = Webpack.findByProps('compact', 'repliedMessage', 'username');
+import { username } from '@goosemod/patcher';
+import { findByProps } from '@goosemod/webpack';
+import { React } from '@goosemod/webpack/common';
 
+const MessageClasses = findByProps('compact', 'repliedMessage', 'username');
 
-class UsernameInAuthor extends Plugin {
-    onImport() {
-      this.enqueueUnpatch(Username.patch(({ message, author }) =>
+let unpatch;
+
+export default {
+  goosemodHandlers: {
+    onImport: () => {
+      unpatch = username.patch(({ message, author }) =>
         React.createElement('span', {
           className: MessageClasses.username,
           style: {
@@ -14,11 +19,11 @@ class UsernameInAuthor extends Plugin {
           }
         }, author.nick === message.author.username ? '' : `(${message.author.username})`
         )
-      ));
-    }
+      );
+    },
 
-    onRemove() {
+    onRemove: () => {
+      unpatch();
     }
+  }
 };
-
-export default new UsernameInAuthor();
