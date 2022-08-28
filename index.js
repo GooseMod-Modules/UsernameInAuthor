@@ -11,7 +11,7 @@ export default {
     onImport: () => {
       unpatch = username.patch(({ message, author }) =>
         React.createElement('span', {
-          className: MessageClasses.username,
+          className: [MessageClasses.username, 'authorUsernameHint'],
           style: {
             color: author.colorString,
             filter: 'brightness(0.5)',
